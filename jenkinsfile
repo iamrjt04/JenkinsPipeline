@@ -2,9 +2,9 @@ currentBuild.displayName = "Test#"+currentBuild.number
 pipeline {
     agent any
     
-    tools {
+    //tools {
      //  maven 'MAVEN354'
-    }
+    //}
 
     environment {
         //AWS_PROFILE = "v2d"
