@@ -2,7 +2,7 @@ currentBuild.displayName = "Test#"+currentBuild.number
 pipeline {
     agent {
     kubernetes {
-        //label podlabel
+        label master
         yaml """
 kind: Pod
 metadata:
