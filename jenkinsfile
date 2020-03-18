@@ -3,7 +3,7 @@ pipeline {
     agent any
     
     tools {
-       maven 'MAVEN354'
+     //  maven 'MAVEN354'
     }
 
     environment {
