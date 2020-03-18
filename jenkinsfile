@@ -2,9 +2,6 @@ currentBuild.displayName = "Test#"+currentBuild.number
 pipeline {
     agent any
     
-    parameters {
-    }
-
     tools {
        maven 'MAVEN354'
     }
