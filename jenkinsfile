@@ -1,0 +1,50 @@
+currentBuild.displayName = "Test#"+currentBuild.number
+pipeline {
+    agent any
+    
+    parameters {
+    }
+
+    tools {
+       maven 'MAVEN354'
+    }
+
+    environment {
+        //AWS_PROFILE = "v2d"
+        //KUBECONFIG = "$HOME/.kube/kubeconfig-dev"
+        //PATH = "$PATH:/usr/local/bin"
+        //SBT_OPTS="-Xss20M"
+        //DOCKER_HOST= "tcp://127.0.0.1:2375"
+        //DOCKER_BASE_REGISTRY= "969364019056.dkr.ecr.us-east-1.amazonaws.com"
+        //DOCKER_TARGET_REGISTRY= "969364019056.dkr.ecr.us-east-1.amazonaws.com"
+        //BUILD_DISPLAY_NAME= "calcite.1.${BUILD_NUMBER}"
+        GIT_CREDENTIAL_ID = "b0eb09fd-c156-4629-bdf4-2435fda563c7"
+        //ARTIFACTORY_SERVER_ID = "696333576@1449114955179"
+    }
+
+    stages {  
+        stage('Clone') {
+            // agent {
+            //    // Local Agent block(scope is local only for "Clone" stage), Agent is a docker image. 
+            //     docker {
+            //         reuseNode false
+            //         image 'ubuntu'
+            //     }
+            // }
+            steps {
+                sh "printenv | sort" // prints all the environment variable
+                // Get some code from a GitHub repository
+                //git branch: "${params.BRANCH}",
+                //credentialsId: env.GIT_CREDENTIAL_ID,
+                //url: env.GIT_URL
+            }
+        }
+
+        stage('Maven Build') {
+            steps {
+                sh 'echo Test'
+                //sh 'mvn  -Ppackage -U  clean install  -Dcheckstyle.skip=false -DskipTests=false -e -DskipDocker=false'
+            }        
+        }
+    }
+}
